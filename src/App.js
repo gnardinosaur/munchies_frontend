@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Redirect,Switch } from 'react-router-dom';
+import Login from './components/Login';
+import Home from './components/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    user: {}
+  }
+
+  setUser = (e, username) => {
+    e.preventDefault();
+    fetch("http://localhost:3000/api/v1/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify({ username: username })
+    })
+      .then(resp => resp.json())
+      .then(userObj => this.setState({ user: userObj }))
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path="/home" render={() => <Home user={this.state.user} />} />
+            <Route exact path="/" render={(routerProps) => <Login setUser={this.setUser} {...routerProps} />} />
+          </Switch>
+        </Router>
+      </div>
+    )
+  };
 }
 
 export default App;
