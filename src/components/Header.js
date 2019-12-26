@@ -10,8 +10,8 @@ class Header extends React.Component {
           <input placeholder="Search..."/>
         </div>
         <div className="header-imgs">
-          <img src={cart} />
-          <img src={user} />
+          <img src={cart} alt={"cart"}/>
+          <img src={user} alt={"user"} />
         </div>
       </div> 
     )

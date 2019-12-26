@@ -7,7 +7,7 @@ class SideNav extends React.Component {
   render() {
     return ( 
       <div className="sidenav">
-        <img src={logo}/>
+        <img src={logo} alt={"logo"}/>
         <h3>Departments -</h3>
           <ul className="list">
             <li><Link to="/grocery" exact>Grocery</Link></li>
