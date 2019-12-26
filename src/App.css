@@ -17,7 +17,7 @@ input[type="submit"] {
 
 .sidenav {
   height: 100%;
-  width: 300px;
+  width: 20%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -46,27 +46,42 @@ input[type="submit"] {
 
 .header {
   border-bottom: 3px solid lightgrey;
-  height: 100px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header input {
-  margin-top: 30px;
-  float: left;
-  margin-left: 400px;
   height: 30px;
   width: 500px;
   font-size: 24px;
+  margin-left: 75%;
 }
 
 .header-imgs {
-  margin: 10px
+  margin: 10px;
+  margin-right: 5%;
 }
 
 .header-imgs img {
   max-width: 50px;
   max-height: 50px;
-  float: right;
-  margin-right: 50px;
-  margin-top: 10px
+  margin: 10px;
 }
 
+.best-sellers {
+  margin-left: 20%;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  flex: 0 0 25%;
+  margin: 10px;
+  padding: 10px;
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
