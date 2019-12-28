@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
   font-family: 'Spectral', serif;
@@ -70,6 +74,10 @@ input[type="submit"] {
   margin: 10px;
 }
 
+/* .content {
+  align text so it's a little to the rigth/ centered in the content box 
+} */
+
 .best-sellers {
   margin-left: 20%;
   padding: 10px;
@@ -80,6 +88,24 @@ input[type="submit"] {
 .item {
   flex: 0 0 25%;
   margin: 10px;
+  padding: 10px;
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.view-item {
+  background-color: rgb(14, 115, 179);
+  width: 100%;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer; 
+}
+
+.one-item {
+  margin-left: 25%;
+  margin-right: 10%;
+  margin-top: 50px;
   padding: 10px;
   border: 1px;
   border-style: solid;
