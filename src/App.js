@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import Home from './components/Home';
 
@@ -27,12 +27,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Router>
-          <Switch>
-            <Route path="/home" render={(routerProps) => <Home user={this.state.user} {...routerProps} />} />
-            <Route exact path="/" render={(routerProps) => <Login setUser={this.setUser} {...routerProps} />} />
-          </Switch>
-        </Router>
+        <Switch>
+          <Route path="/home" render={(routerProps) => <Home user={this.state.user} {...routerProps} />} /> 
+          <Route exact path="/" render={(routerProps) => <Login setUser={this.setUser} {...routerProps} />} />
+        </Switch>
       </div>
     )
   };
