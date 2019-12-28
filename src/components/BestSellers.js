@@ -17,7 +17,7 @@ class BestSellers extends React.Component {
   render() {
     return (
       <div className="best-sellers">
-        {this.state.bestSellers.map(item => <Item {...item} clickItem={this.props.clickItem} />)}
+        {this.state.bestSellers.map(item => <Item {...item} showItem={this.props.showItem} />)}
       </div>
     )
   }
