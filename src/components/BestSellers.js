@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Item from './Item';
 
@@ -8,6 +7,7 @@ class BestSellers extends React.Component {
     bestSellers: []
   }
   
+  //change to only display 9 random items from API call 
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/orders")
     .then(resp => resp.json())
@@ -17,7 +17,7 @@ class BestSellers extends React.Component {
   render() {
     return (
       <div className="best-sellers">
-        {this.state.bestSellers.map(item => <Item {...item}/>)}
+        {this.state.bestSellers.map(item => <Item {...item} clickItem={this.props.clickItem} />)}
       </div>
     )
   }
