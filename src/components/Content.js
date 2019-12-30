@@ -2,16 +2,24 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import BestSellers from './BestSellers';
 import ShowItem from './ShowItem';
+import Cart from './Cart';
 
 class Content extends React.Component {
 
   state = {
-    item: {}
+    showItem: {},
+    cartItems: []
   }
 
-  showItem = (itemObj) => {
-    this.setState({ item: itemObj })
-    this.props.routerProps("/home/item")
+  setShowItem = (itemObj) => {
+    this.setState({ showItem: itemObj });
+    this.props.changeURL("/home/item")
+  }
+
+  addItemToCart = (itemObj, num) => {
+    itemObj = {...itemObj, qty: num};
+    this.setState({ cartItems: [...this.state.cartItems, itemObj] });
+    this.props.changeURL("/home")
   }
 
   render() {
@@ -19,10 +27,10 @@ class Content extends React.Component {
       //change div Text based on type of content rendered in this component ex. Best Sellers, Items, Cart of Profile
       <div className="content"> content component
         <Switch>
-          <Route path="/home/item" render={() => <ShowItem item={this.state.item} />} />
-          <Route path="/home" render={() => <BestSellers showItem={this.showItem} />} />
-          {/* <Cart />
-          <Profile /> */}
+          <Route path="/home/item" render={() => <ShowItem item={this.state.showItem} addItemToCart={this.addItemToCart} />} />
+          <Route path="/home/cart" render={() => <Cart cartItems={this.state.cartItems}/>}/>
+          {/* <Profile /> */}
+          <Route path="/home" render={() => <BestSellers setShowItem={this.setShowItem} />} />
         </Switch> 
       </div>
     )
