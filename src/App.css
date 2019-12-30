@@ -48,6 +48,10 @@ input[type="submit"] {
   padding: 10px;
 }
 
+.sidenav img {
+  cursor: pointer;
+}
+
 .header {
   border-bottom: 3px solid lightgrey;
   height: 150px;
@@ -66,6 +70,7 @@ input[type="submit"] {
 .header-imgs {
   margin: 10px;
   margin-right: 5%;
+  cursor: pointer;
 }
 
 .header-imgs img {
@@ -75,7 +80,7 @@ input[type="submit"] {
 }
 
 /* .content {
-  align text so it's a little to the rigth/ centered in the content box 
+  align text so it's a little to the right/centered in the content box 
 } */
 
 .best-sellers {
@@ -103,6 +108,7 @@ input[type="submit"] {
 }
 
 .one-item {
+  position: relative;
   margin-left: 25%;
   margin-right: 10%;
   margin-top: 50px;
@@ -110,4 +116,66 @@ input[type="submit"] {
   border: 1px;
   border-style: solid;
   border-color: black;
+}
+
+.one-item .select {
+  position: absolute;
+  bottom: 10%;
+  right: 15%;
+}
+
+.one-item select {
+  margin-left: 10px;
+  width: 80px;
+  height: 30px;
+  background-color: rgb(14, 115, 179);
+  color: white;
+}
+
+.add-to-cart-btn {
+  position: absolute;
+  right: 3%;
+  bottom: 10%;
+  background-color: rgb(7, 182, 7);
+  border-radius: 5px;
+  height: 30px;
+  cursor: pointer; 
+  color: white;
+  font-weight: bold;
+  align-content: center;
+}
+
+.add-to-cart-btn img {
+  max-height: 75%;
+}
+
+.add-to-cart-btn div {
+  display: inline;
+  padding-left: 10px;
+}
+
+.cart {
+  margin-left: 25%;
+  margin-top: 50px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  font-size: 20px;
+}
+
+td, th {
+  padding: 15px;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+.cart-total {
+  font-weight: bold;
+  font-size: 20px;
 }

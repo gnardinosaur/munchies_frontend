@@ -8,9 +8,9 @@ class Home extends React.Component {
   render() {
     return(
       <div>
-        <SideNav />
-        <Header />
-        <Content routerProps={this.props.history.push} />
+        <SideNav changeURL={this.props.history.push} />
+        <Header changeURL={this.props.history.push} />
+        <Content changeURL={this.props.history.push} />
       </div>
     )
   }
