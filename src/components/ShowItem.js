@@ -15,7 +15,7 @@ class ShowItem extends React.Component {
     const selectOptions = function options() {
       let nums = [];
       for (let i = 1; i < 10; i++) {
-        nums.push(<option value={i}>{i}</option>);
+        nums.push(<option key={i} value={i}>{i}</option>);
       }
       return nums;
     }
@@ -25,13 +25,18 @@ class ShowItem extends React.Component {
         <h3>{this.props.item.items}</h3>
         <h4>$ {this.props.item.total}</h4>
         <h5>{this.props.item.id}</h5>
-        <div className="select">
-          Qty:<select onChange={this.setQty}> {selectOptions()} </select>
-        </div>
-        <button className="add-to-cart-btn" onClick={() => this.props.addItemToCart(this.props.item, this.state.qty)}>
-          <img src={CartImage} alt="cart" />
-          <div>Add To Cart</div>
-        </button> 
+        
+        <div className="add-to-cart">
+          <div className="add-to-cart-select">
+            Qty:<select onChange={this.setQty}> {selectOptions()} </select>
+          </div>
+
+          <button className="add-to-cart-btn" onClick={() => this.props.addItemToCart(this.props.item, this.state.qty)}>
+            <img src={CartImage} alt="cart" />
+            <div>Add To Cart</div>
+          </button> 
+        </div> 
+
       </div>
     )
   }

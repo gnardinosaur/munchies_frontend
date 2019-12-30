@@ -79,9 +79,9 @@ input[type="submit"] {
   margin: 10px;
 }
 
-/* .content {
-  align text so it's a little to the right/centered in the content box 
-} */
+.content {
+  position: relative;
+}
 
 .best-sellers {
   margin-left: 20%;
@@ -118,13 +118,19 @@ input[type="submit"] {
   border-color: black;
 }
 
-.one-item .select {
-  position: absolute;
-  bottom: 10%;
-  right: 15%;
+.add-to-cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.one-item select {
+.add-to-cart-select {
+  position: absolute;
+  bottom: 10%;
+  right: 20%;
+}
+
+.add-to-cart select {
   margin-left: 10px;
   width: 80px;
   height: 30px;
@@ -134,7 +140,7 @@ input[type="submit"] {
 
 .add-to-cart-btn {
   position: absolute;
-  right: 3%;
+  right: 5%;
   bottom: 10%;
   background-color: rgb(7, 182, 7);
   border-radius: 5px;
@@ -167,6 +173,16 @@ th {
   font-size: 20px;
 }
 
+td button {
+  margin-right: 10px;
+  color: rgb(190, 59, 59);
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 td, th {
   padding: 15px;
 }
@@ -178,4 +194,17 @@ table, td, th {
 .cart-total {
   font-weight: bold;
   font-size: 20px;
+  color: green;
+}
+
+.checkout-btn button {
+  position: absolute;
+  background-color: rgb(7, 182, 7);
+  border-radius: 5px;
+  height: 30px;
+  cursor: pointer; 
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  right: 20%;
 }
