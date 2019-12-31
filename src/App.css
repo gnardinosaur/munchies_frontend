@@ -83,6 +83,11 @@ input[type="submit"] {
   position: relative;
 }
 
+.content-title {
+  font-size: 36px;
+  font-weight: bold;
+}
+
 .best-sellers {
   margin-left: 20%;
   padding: 10px;
