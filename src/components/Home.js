@@ -10,7 +10,7 @@ class Home extends React.Component {
       <div>
         <SideNav changeURL={this.props.history.push} />
         <Header changeURL={this.props.history.push} />
-        <Content changeURL={this.props.history.push} userId={this.props.userId} />
+        <Content changeURL={this.props.history.push} user={this.props.user} />
       </div>
     )
   }

@@ -8,6 +8,10 @@ class Header extends React.Component {
     this.props.changeURL("/home/cart")
   }
 
+  viewProfile = () => {
+    this.props.changeURL("/home/profile")
+  }
+
   render() {
     return (
       <div className="header">
@@ -16,7 +20,7 @@ class Header extends React.Component {
         </div>
         <div className="header-imgs">
           <img onClick={this.viewCart} src={cart} alt={"cart"}/>
-          <img src={user} alt={"user"} />
+          <img onClick={this.viewProfile} src={user} alt={"user"} />
         </div>
       </div> 
     )

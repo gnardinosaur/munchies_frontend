@@ -28,7 +28,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
-          <Route path="/home" render={(routerProps) => <Home user={this.state.user} {...routerProps} userId={this.state.user.id} />} /> 
+          <Route path="/home" render={(routerProps) => <Home user={this.state.user} {...routerProps} user={this.state.user} />} /> 
           <Route exact path="/" render={(routerProps) => <Login setUser={this.setUser} {...routerProps} />} />
         </Switch>
       </div>
