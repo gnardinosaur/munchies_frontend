@@ -9,7 +9,7 @@ class BestSellers extends React.Component {
   
   //change to only display 9 random items from API call 
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/orders")
+    fetch("http://localhost:3000/api/v1/items")
     .then(resp => resp.json())
     .then(items => this.setState({ bestSellers: items }))
   }

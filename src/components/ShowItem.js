@@ -22,9 +22,9 @@ class ShowItem extends React.Component {
 
     return (
       <div className="one-item">
-        <h3>{this.props.item.items}</h3>
-        <h4>$ {this.props.item.total}</h4>
-        <h5>{this.props.item.id}</h5>
+        <img className="item-img" src= {this.props.item.img_url} alt="item"/>
+        <h3>{this.props.item.name}</h3>
+        <h4>$ {this.props.item.price}</h4>
         
         <div className="add-to-cart">
           <div className="add-to-cart-select">
