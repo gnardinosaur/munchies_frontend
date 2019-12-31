@@ -99,6 +99,11 @@ input[type="submit"] {
   border-color: black;
 }
 
+.item img {
+  width: 50%;
+  padding-top: 5%;
+}
+
 .view-item {
   background-color: rgb(14, 115, 179);
   width: 100%;
@@ -116,6 +121,11 @@ input[type="submit"] {
   border: 1px;
   border-style: solid;
   border-color: black;
+}
+
+.item-img {
+  width: 50%;
+  padding-top: 5%
 }
 
 .add-to-cart {

@@ -6,10 +6,10 @@ class Cart extends React.Component {
     let total;
 
     if (this.props.cartItems.length === 1) {
-      total = this.props.cartItems[0].total * this.props.cartItems[0].qty
+      total = this.props.cartItems[0].price * this.props.cartItems[0].qty
     } else if (this.props.cartItems.length > 1) {
       total = this.props.cartItems.reduce((a, b) => {
-        return a + (b.total * b.qty)
+        return a + (b.price * b.qty)
         }, 0)
     } else { 
       total = 0
@@ -18,31 +18,45 @@ class Cart extends React.Component {
     return total
   }
 
-  saveOrder = () => {
-    let itemNames = this.props.cartItems.map(item => item.items)
-    let newOrder = {
-      items: itemNames,
-      total: this.cartTotal(),
-      userId: this.props.userId
-    }; 
-    
+  createOrder = () => {
     fetch("http://localhost:3000/api/v1/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify(newOrder)
+      body: JSON.stringify({ 
+        total: this.cartTotal(),
+        user: this.props.userId
+      })
     })
     .then(resp => resp.json())
-    .then(console.log)
+    .then(data => this.createOrderItems(data.id))
+  }
+
+  createOrderItems = (orderId) => {
+    this.props.cartItems.forEach(item => {
+      fetch("http://localhost:3000/api/v1/order_items", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: item.name,
+        price: item.price,
+        quantity: item.qty,
+        order: orderId
+      })      
+      })
+    })
   }
 
   render(){
 
     let checkoutButton = 
       <div className="checkout-btn">
-        <button onClick={this.saveOrder}>Checkout</button>
+        <button onClick={this.createOrder}>Checkout</button>
       </div>
   
 
@@ -61,10 +75,10 @@ class Cart extends React.Component {
           {this.props.cartItems.map((item) => { 
           return (
             <tr>  
-              <td><button onClick={() => this.props.removeItemFromCart(item.id)}>&times;</button>{item.items}</td>
-              <td>$ {item.total}</td>
+              <td><button onClick={() => this.props.removeItemFromCart(item.id)}>&times;</button>{item.name}</td>
+              <td>$ {item.price}</td>
               <td>{item.qty}</td>
-              <td>$ {item.total * item.qty}</td>
+              <td>$ {(item.price * item.qty).toFixed(2)}</td>
             </tr>
           )})}
             <tr className="cart-total">
