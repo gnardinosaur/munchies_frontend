@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class SideNav extends React.Component {
 
   goHome = () => {
-    this.props.changeURL("/home")
+    this.props.changeURL("/")
   }
 
   render() {
