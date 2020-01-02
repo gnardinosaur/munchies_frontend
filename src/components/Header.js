@@ -5,11 +5,11 @@ import user from "../user.png";
 class Header extends React.Component {
 
   viewCart = () => {
-    this.props.changeURL("/home/cart")
+    this.props.changeURL("/cart")
   }
 
   viewProfile = () => {
-    this.props.changeURL("/home/profile")
+    this.props.changeURL("/profile")
   }
 
   render() {

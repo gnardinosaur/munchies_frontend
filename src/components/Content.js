@@ -14,13 +14,13 @@ class Content extends React.Component {
 
   setShowItem = (itemObj) => {
     this.setState({ showItem: itemObj });
-    this.props.changeURL("/home/item")
+    this.props.changeURL("/item")
   }
 
   addItemToCart = (itemObj, num) => {
     itemObj = {...itemObj, qty: num};
     this.setState({ cartItems: [...this.state.cartItems, itemObj] });
-    this.props.changeURL("/home")
+    this.props.changeURL("/")
   }
 
   removeItemFromCart = (id) => {
@@ -29,19 +29,19 @@ class Content extends React.Component {
 
   clearCartItems = () => {
     this.setState({ cartItems: [] })
-    setTimeout(() => this.props.changeURL("/home"), 3000)
+    setTimeout(() => this.props.changeURL("/"), 3000)
   }
 
   contentTitle = () => {
     let text; 
     switch (window.location.pathname) {
-      case "/home":
-        text = "Best Sellers Yo!!!"
+      case "/":
+        text = "Best Sellers!!!"
         break;
-      case "/home/item":
+      case "/item":
         text = `Get Some ${this.state.showItem.name}...`
         break;
-      case "/home/cart":
+      case "/cart":
         text = `${this.props.user.username}'s Cart`
       break;
     }
@@ -53,10 +53,10 @@ class Content extends React.Component {
       <div className="content"> 
         <div className="content-title">{this.contentTitle()}</div>
         <Switch>
-          <Route path="/home/item" render={() => <ShowItem item={this.state.showItem} addItemToCart={this.addItemToCart} />} />
-          <Route path="/home/cart" render={() => <Cart cartItems={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} userId={this.props.user.id} clearCartItems={this.clearCartItems}/>}/>
-          <Route path="/home/profile" render={() => <Profile user={this.props.user} />} />
-          <Route path="/home" render={() => <BestSellers setShowItem={this.setShowItem} />} />
+          <Route path="/item" render={() => <ShowItem item={this.state.showItem} addItemToCart={this.addItemToCart} />} />
+          <Route path="/cart" render={() => <Cart cartItems={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} userId={this.props.user.id} clearCartItems={this.clearCartItems}/>}/>
+          <Route path="/profile" render={() => <Profile user={this.props.user} userLoggedIn={this.props.userLoggedIn} setUser={this.props.setUser} updateUser={this.props.updateUser} />} />
+          <Route path="/" render={() => <BestSellers setShowItem={this.setShowItem} />} />
         </Switch> 
       </div>
     )

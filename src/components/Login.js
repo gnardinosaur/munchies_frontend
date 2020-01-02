@@ -12,13 +12,12 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     this.props.setUser(e, this.state.username);
-    this.props.history.push("/home")
   }
 
   render() {
       return(
       <div className="login">
-        <h1>Munchies.</h1>
+        <h1>Please Log Into Munchies.</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Username:</label> 
           <input onChange={this.handleChange} name="username" placeholder="username..."/><br />
