@@ -42,7 +42,11 @@ class Content extends React.Component {
         text = `Get Some ${this.state.showItem.name}...`
         break;
       case "/cart":
-        text = `${this.props.user.username}'s Cart`
+        if (this.props.user.username) {
+          text = `${this.props.user.username}'s Cart`
+        } else {
+          text = "Your Cart"
+        }
       break;
     }
     return text 
