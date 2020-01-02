@@ -3,7 +3,8 @@ import React from 'react';
 class Cart extends React.Component {
 
   state = {
-    orderComplete: false
+    orderComplete: false,
+    showModal: false
   }
 
   cartTotal = () => {
@@ -22,19 +23,23 @@ class Cart extends React.Component {
   }
 
   createOrder = () => {
-    fetch("http://localhost:3000/api/v1/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({ 
-        total: this.cartTotal(),
-        user: this.props.userId
+    if (this.props.userId) {
+      fetch("http://localhost:3000/api/v1/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ 
+          total: this.cartTotal(),
+          user: this.props.userId
+        })
       })
-    })
-    .then(resp => resp.json())
-    .then(data => this.createOrderItems(data.id))
+      .then(resp => resp.json())
+      .then(data => this.createOrderItems(data.id))
+    } else {
+      this.setState({ showModal: true })
+    }
   }
 
   createOrderItems = (orderId) => {
@@ -59,6 +64,10 @@ class Cart extends React.Component {
     this.props.clearCartItems()
   }
 
+  closeModal = () => {
+    this.setState({ showModal: false })
+  }
+
   render(){
 
     if (this.state.orderComplete) {
@@ -68,7 +77,6 @@ class Cart extends React.Component {
         <div className="checkout-btn">
           <button onClick={this.createOrder}>Checkout</button>
         </div>
-    
 
       return (
         <div className="cart">
@@ -101,6 +109,13 @@ class Cart extends React.Component {
           </table>
 
           {this.props.cartItems.length !== 0 && checkoutButton}
+
+          <div className="modal" style={{display: this.state.showModal ? "block" : "none" }}>
+            <div className="modal-content">
+              <div onClick={this.closeModal} className="modal-close-btn">&times;</div>
+              <h3>Please <span>Log In</span> To Checkout.</h3>
+            </div>
+          </div>
           
         </div>
       )

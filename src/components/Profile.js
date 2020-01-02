@@ -24,7 +24,6 @@ class Profile extends React.Component {
   handleSubmit = (e) => {
     this.props.updateUser(e, this.state)
   }
-
   
   //render horizontal line and under that past orders - should be able to delete these past orders
   render() {
