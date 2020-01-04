@@ -15,6 +15,17 @@
 .logged-in {
   margin-top: 75px;
   margin-left: 15%;
+  padding-right: 10px;
+}
+
+.logged-in h3 {
+  font-size: 30px;
+}
+
+hr {
+  margin-top: 5%;
+  width: 75%;
+  border-color: black;
 }
 
 label {
@@ -231,7 +242,6 @@ table, td, th {
 }
 
 .modal {
-  /* display: none; */
   position: fixed;
   z-index: 1;
   padding-top: 100px;
@@ -265,4 +275,43 @@ table, td, th {
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.update-btn {
+  background-color: rgb(7, 182, 7);
+  border-radius: 5px;
+  height: 30px;
+  cursor: pointer; 
+  color: white;
+  font-weight: bold;
+}
+
+.login-btn {
+  background-color: rgb(7, 182, 7);
+  border-radius: 5px;
+  height: 30px;
+  cursor: pointer; 
+  color: white;
+  font-weight: bold;
+}
+
+.past-orders-btn {
+  background-color: rgb(7, 182, 7);
+  border-radius: 5px;
+  height: 30px;
+  cursor: pointer; 
+  color: white;
+  font-weight: bold;
+}
+
+.past-orders-tbl {
+  margin-left: 25%;
+}
+
+.past-orders-tbl th {
+  font-size: 16px
+}
+
+.order-num{
+  text-align: left;
 }

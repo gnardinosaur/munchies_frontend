@@ -5,7 +5,8 @@ class Profile extends React.Component {
 
   state = {
     username: "",
-    email: ""
+    email: "",
+    showModal: false
   }
 
   componentDidUpdate(prevProps) {
@@ -22,10 +23,19 @@ class Profile extends React.Component {
   }
 
   handleSubmit = (e) => {
+    this.setState({ showModal: true })
     this.props.updateUser(e, this.state)
   }
+
+  closeModal = () => {
+    this.setState({ showModal: false })
+    this.props.changeURL("/home")
+  }
+
+  pastOrders = () => {
+    this.props.changeURL("/profile/past_orders")
+  }
   
-  //render horizontal line and under that past orders - should be able to delete these past orders
   render() {
     if (this.props.userLoggedIn) {
       return (
@@ -38,9 +48,24 @@ class Profile extends React.Component {
             <label>Email:</label>
             <input onChange={this.handleChange} name="email" placeholder={this.props.user.email} ></input><br />
 
-            <input type="submit" value="Update Profile" />
+            <input className="update-btn" type="submit" value="Update Profile" />
 
           </form>
+
+          <hr></hr>
+
+          <div>
+            <button className="past-orders-btn" onClick={this.pastOrders}>See Past Orders</button>
+          </div>
+
+          <div className="modal" style={{display: this.state.showModal ? "block" : "none" }}>
+            <div className="modal-content">
+              <div onClick={this.closeModal} className="modal-close-btn">&times;</div>
+              <h3>Profile Updated</h3>
+            </div>
+          </div>
+          
+
         </div>
       )
     } else {
