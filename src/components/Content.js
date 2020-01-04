@@ -4,6 +4,7 @@ import BestSellers from './BestSellers';
 import ShowItem from './ShowItem';
 import Cart from './Cart';
 import Profile from './Profile';
+import PastOrders from './PastOrders';
 
 class Content extends React.Component {
 
@@ -58,8 +59,9 @@ class Content extends React.Component {
         <div className="content-title">{this.contentTitle()}</div>
         <Switch>
           <Route path="/item" render={() => <ShowItem item={this.state.showItem} addItemToCart={this.addItemToCart} />} />
-          <Route path="/cart" render={() => <Cart cartItems={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} userId={this.props.user.id} clearCartItems={this.clearCartItems}/>}/>
-          <Route path="/profile" render={() => <Profile user={this.props.user} userLoggedIn={this.props.userLoggedIn} setUser={this.props.setUser} updateUser={this.props.updateUser} />} />
+          <Route path="/cart" render={() => <Cart cartItems={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} userId={this.props.user.id} clearCartItems={this.clearCartItems} />} /> 
+          <Route path="/profile/past_orders" render={() => <PastOrders user={this.props.user} />} />
+          <Route path="/profile" render={() => <Profile user={this.props.user} userLoggedIn={this.props.userLoggedIn} setUser={this.props.setUser} updateUser={this.props.updateUser} changeURL={this.props.changeURL} />} />
           <Route path="/" render={() => <BestSellers setShowItem={this.setShowItem} />} />
         </Switch> 
       </div>
